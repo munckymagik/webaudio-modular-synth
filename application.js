@@ -42,8 +42,15 @@
   // Mixer ---------------------------------------------------------------------
   //
 
-  function Mixer(audioCtx) {
+  function Mixer(audioCtx, ui_element) {
+    var self = this;
+
     this.gain = audioCtx.createGain();
+    this.ui_control = ui_element.querySelector('.mixer__control');
+
+    this.ui_control.addEventListener('mousemove', function() {
+      self.setValue(self.ui_control.value);
+    });
   }
 
   Mixer.prototype.connect = function(node) {
@@ -96,8 +103,7 @@
 
     var audioCtx = new AudioContext();
     var oscillator = new Oscillator(audioCtx);
-    var mixer = new Mixer(audioCtx);
-    var gainValue = document.querySelector('#gain-value');
+    var mixer = new Mixer(audioCtx, document.querySelector("[data-module='mixer']"));
 
     oscillator.connect(mixer.output());
     mixer.connect(audioCtx.destination);
@@ -114,9 +120,6 @@
       oscillator.stop();
     });
 
-    gainValue.addEventListener('mousemove', function() {
-      mixer.setValue(gainValue.value);
-    });
 
   });
 })();
