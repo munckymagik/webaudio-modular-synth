@@ -5,7 +5,9 @@
   // Oscillator ----------------------------------------------------------------------
   //
 
-  function Oscillator(audioCtx) {
+  function Oscillator(audioCtx, ui_element) {
+    var self = this;
+
     this.audioCtx = audioCtx;
 
     // Create the oscillator
@@ -23,6 +25,12 @@
 
     // Set the initial state
     this.stop();
+
+    // Set up the UI
+    this.wave_type_control = ui_element.querySelector(".oscillator__wave-type-control");
+    this.wave_type_control.addEventListener('change', function() {
+      self.osc.type = self.wave_type_control.value;
+    });
   }
 
   Oscillator.prototype.play = function(freq) {
@@ -102,7 +110,7 @@
     console.log('On Load.');
 
     var audioCtx = new AudioContext();
-    var oscillator = new Oscillator(audioCtx);
+    var oscillator = new Oscillator(audioCtx, document.querySelector("[data-module='oscillator']"));
     var mixer = new Mixer(audioCtx, document.querySelector("[data-module='mixer']"));
 
     oscillator.connect(mixer.output());
