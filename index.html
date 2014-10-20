@@ -9,12 +9,59 @@
         padding: 5px;
         border: 1px solid black;
       }
+
+      .keyboard {
+        list-style: none;
+        margin: 5px;
+        padding: 0;
+      }
+
+      .keyboard__key {
+        display: inline-block;
+
+        margin: 0;
+        padding: 5px;
+
+        width: 40px;
+        height: 100px;
+
+        border: 1px solid black;
+      }
+
+      .keyboard__key--white {
+        color: black;
+        background-color: #f0f0f0;
+      }
+
+      .keyboard__key--black {
+        color: white;
+        background-color: black;
+      }
     </style>
   </head>
   <body>
     <div data-module="keyboard">
       <h2>Keyboard</h2>
-      <p>Type keys a, s, d, f, g, h, j, k, l and ; to play notes</p>
+      <p>Type keys a, s, d, f, g, h, j, k, l, ; etc. to play notes</p>
+      <ul class="keyboard">
+        <li class="keyboard__key keyboard__key--white" data-pitch="C4">C4<br>a</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Db4">Db4<br>w</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="D4">D4<br>s</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Eb4">Eb4<br>e</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="E4">E4<br>d</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="F4">F4<br>f</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Gb4">Gb4<br>t</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="G4">G4<br>g</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Ab4">Ab4<br>y</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="A4">A4<br>h</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Bb4">Bb4<br>u</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="B4">B4<br>j</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="C5">C5<br>k</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Db5">Db5<br>o</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="D5">D5<br>l</li>
+        <li class="keyboard__key keyboard__key--black" data-pitch="Eb5">Eb5<br>p</li>
+        <li class="keyboard__key keyboard__key--white" data-pitch="E5">E5<br>;</li>
+      </ul>
     </div>
 
     <div data-module="oscillator">
