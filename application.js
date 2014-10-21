@@ -1,3 +1,6 @@
+
+// http://upload.wikimedia.org/wikipedia/commons/3/3e/R.A.Moog_minimoog_2.jpg
+
 (function() {
   "use strict";
 
