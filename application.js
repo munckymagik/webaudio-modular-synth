@@ -103,6 +103,23 @@
     return map;
   }, {});
 
+  //
+  // Keyboard ------------------------------------------------------------------
+  //
+
+  function Keyboard(output, ui_element) {
+    window.addEventListener('keydown', function(event) {
+      var key = keyMappings[event.keyCode];
+      if (key) {
+        console.log(key.pitch);
+        output.play(key.freq);
+      }
+    });
+
+    window.addEventListener('keyup', function(event) {
+      output.stop();
+    });
+  }
 
   //
   // MAIN ----------------------------------------------------------------------
@@ -115,22 +132,9 @@
     var audioCtx = new AudioContext();
     var oscillator = new Oscillator(audioCtx, document.querySelector("[data-module='oscillator']"));
     var mixer = new Mixer(audioCtx, document.querySelector("[data-module='mixer']"));
+    var keyboard = new Keyboard(oscillator, document.querySelector("[data-module='keyboard']"));
 
     oscillator.connect(mixer.output());
     mixer.connect(audioCtx.destination);
-
-    window.addEventListener('keydown', function(event) {
-      var key = keyMappings[event.keyCode];
-      if (key) {
-        console.log(key.pitch);
-        oscillator.play(key.freq);
-      }
-    });
-
-    window.addEventListener('keyup', function(event) {
-      oscillator.stop();
-    });
-
-
   });
 })();
